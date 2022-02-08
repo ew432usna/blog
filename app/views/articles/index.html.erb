@@ -1,9 +1,15 @@
-<h1>Article Page List</h1>
+<div class="alert alert-primary">
+  Our blog has <span class="text-bold"><%= Article.public_count %></span> articles and counting!
+</div>
 
-<ul>
+<ul class="list-group list-group-flush mb-4">
   <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
+    <% unless article.archived? %>
+      <li class="list-group-item">
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
+
+<%= link_to "New Article", new_article_path, class: "btn btn-outline-primary" %>

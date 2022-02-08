@@ -1,0 +1,10 @@
+<% unless comment.archived? %>
+ 
+
+  <p class="mb-0">
+    <%= comment.body %>
+  </p>
+   <p class="ms-4">
+    <em>&mdash; <%= comment.commenter %></em>
+  </p>
+<% end %>

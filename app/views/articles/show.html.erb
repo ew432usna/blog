@@ -1,3 +1,28 @@
-<h1><%= @article.title %></h1>
+<h1 class="display-6 border-bottom border-light border-3"><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
+
+<ul class="border-bottom border-dark border-1 pb-4">
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  class: "link-danger",
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+
+<%= render @article.comments %>
+
+
+<% if @article.comments.empty?%>
+<p class="lead ms-4">Start the conversation</p>
+<% else %>
+<p class="lead ms-4">Join the conversation</p>
+<% end %>
+
+<div class= "border border-dark ms-4 p-4 rounded bg-light">
+<%= render 'comments/form' %>
+</div>
+
